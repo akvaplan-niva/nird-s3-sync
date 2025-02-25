@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nird_s3_sync package &mdash; NIRD S3 Sync unknown documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=3f1b9271"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            NIRD S3 Sync
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Authors</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">nird_s3_sync package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nird-s3-sync">NIRD S3 Sync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nird_s3_sync.io">nird_s3_sync.io module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nird_s3_sync.io.get_file_sha256_checksum"><code class="docutils literal notranslate"><span class="pre">get_file_sha256_checksum()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nird_s3_sync.io.fs2fs_copy"><code class="docutils literal notranslate"><span class="pre">fs2fs_copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nird_s3_sync.io.safe_fs2fs_copy"><code class="docutils literal notranslate"><span class="pre">safe_fs2fs_copy()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nird_s3_sync.utils">nird_s3_sync.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nird_s3_sync.utils.get_credentials"><code class="docutils literal notranslate"><span class="pre">get_credentials()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nird_s3_sync.utils.get_fs"><code class="docutils literal notranslate"><span class="pre">get_fs()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NIRD S3 Sync</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">nird_s3_sync package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/api/nird_s3_sync.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-nird_s3_sync">
+<span id="nird-s3-sync-package"></span><h1>nird_s3_sync package<a class="headerlink" href="#module-nird_s3_sync" title="Link to this heading"></a></h1>
+<section id="nird-s3-sync">
+<h2>NIRD S3 Sync<a class="headerlink" href="#nird-s3-sync" title="Link to this heading"></a></h2>
+<p>The <em>The NIRD S3 Sync</em> packages provides a way to fetch data
+stored on <a class="reference external" href="https://documentation.sigma2.no/files_storage/nird/s3.html">NIRD S3 (Sigma2)</a>,
+and copy/synchronize it with a specified location on another file-system.</p>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-nird_s3_sync.io">
+<span id="nird-s3-sync-io-module"></span><h2>nird_s3_sync.io module<a class="headerlink" href="#module-nird_s3_sync.io" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="nird_s3_sync.io.get_file_sha256_checksum">
+<span class="sig-prename descclassname"><span class="pre">nird_s3_sync.io.</span></span><span class="sig-name descname"><span class="pre">get_file_sha256_checksum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1048576</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nird_s3_sync.io.get_file_sha256_checksum" title="Link to this definition"></a></dt>
+<dd><p>Get the SHA256-checksum of a file on a file-system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fs</strong> (<a class="reference external" href="https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem" title="(in fsspec v2024.10.0.post13+gdbed2ec.d20241115)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fsspec.spec.AbstractFileSystem</span></code></a>) – File-system instance where the file is located.</p></li>
+<li><p><strong>path</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Path of the file on the file-system.</p></li>
+<li><p><strong>chunk_size</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Number of bytes to read at a time to update the hash object state.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>SHA256-checksum.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nird_s3_sync.io.fs2fs_copy">
+<span class="sig-prename descclassname"><span class="pre">nird_s3_sync.io.</span></span><span class="sig-name descname"><span class="pre">fs2fs_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fs_dest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_dest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1048576</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nird_s3_sync.io.fs2fs_copy" title="Link to this definition"></a></dt>
+<dd><p>Copy a file from one file-system to another.</p>
+<p>Copy a file from a file-system instance at a given path, to another
+file-system instance at a given path. Return the SHA256-checksum computed
+from the bytes read from the file on the source file-system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fs_src</strong> (<a class="reference external" href="https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem" title="(in fsspec v2024.10.0.post13+gdbed2ec.d20241115)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fsspec.spec.AbstractFileSystem</span></code></a>) – Instance of the (source) file-system where the file to be copied is.</p></li>
+<li><p><strong>path_src</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Path of the file to be copied on the source file-system.</p></li>
+<li><p><strong>fs_dest</strong> (<a class="reference external" href="https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem" title="(in fsspec v2024.10.0.post13+gdbed2ec.d20241115)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fsspec.spec.AbstractFileSystem</span></code></a>) – Instance of the (destination) file-system to which the file will be copied.</p></li>
+<li><p><strong>path_dest</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Path of the file to be copied on the destination file-system.</p></li>
+<li><p><strong>chunk_size</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, default: 1048576) – Number of bytes to copy at a time. Default is 1048576 (1MB).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>SHA256-checksum of the file read on the source file-system.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nird_s3_sync.io.safe_fs2fs_copy">
+<span class="sig-prename descclassname"><span class="pre">nird_s3_sync.io.</span></span><span class="sig-name descname"><span class="pre">safe_fs2fs_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fs_dest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_dest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1048576</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_retries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nird_s3_sync.io.safe_fs2fs_copy" title="Link to this definition"></a></dt>
+<dd><p>Copy a file from one file-system to another and ensure data integrity.</p>
+<p>Copy a file from a file-system instance at a given path, to another
+file-system instance at a given path. Ensure data integrity by computing
+the SHA256-checksum of the copied file on the destination file-system, and
+verifying that it matches the checksum computed from the file read on the
+source file-system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fs_src</strong> (<a class="reference external" href="https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem" title="(in fsspec v2024.10.0.post13+gdbed2ec.d20241115)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fsspec.spec.AbstractFileSystem</span></code></a>) – Instance of the (source) file-system where the file to be copied is.</p></li>
+<li><p><strong>path_src</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Path of the file to be copied on the source file-system.</p></li>
+<li><p><strong>fs_dest</strong> (<a class="reference external" href="https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem" title="(in fsspec v2024.10.0.post13+gdbed2ec.d20241115)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fsspec.spec.AbstractFileSystem</span></code></a>) – Instance of the (destination) file-system to which the file will be copied.</p></li>
+<li><p><strong>path_dest</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Path of the file to be copied on the destination file-system.</p></li>
+<li><p><strong>chunk_size</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, default: 1048576) – Number of bytes to copy at a time. Default is 1048576 (1MB). The same
+<code class="docutils literal notranslate"><span class="pre">chunk_size</span></code> will be used to read and compute the checksum of the
+file copied on the destination file-system.</p></li>
+<li><p><strong>n_retries</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, default: 3) – Maximum number of times to restart the copy operation for, if the data
+was corrupted while copied. Default is 3.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – If the data was corrupted while copied, after a given number of
+    attempts (see <code class="docutils literal notranslate"><span class="pre">n_retries</span></code>).</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#nird_s3_sync.io.fs2fs_copy" title="nird_s3_sync.io.fs2fs_copy"><code class="xref py py-func docutils literal notranslate"><span class="pre">fs2fs_copy()</span></code></a></dt><dd><p>Copy file between file-systems with data integrity check.</p>
+</dd>
+</dl>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-nird_s3_sync.utils">
+<span id="nird-s3-sync-utils-module"></span><h2>nird_s3_sync.utils module<a class="headerlink" href="#module-nird_s3_sync.utils" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="nird_s3_sync.utils.get_credentials">
+<span class="sig-prename descclassname"><span class="pre">nird_s3_sync.utils.</span></span><span class="sig-name descname"><span class="pre">get_credentials</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nird_s3_sync.utils.get_credentials" title="Link to this definition"></a></dt>
+<dd><p>Get the credentials to access the NIRD S3 bucket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – If the environment variables corresponding to the credentials are not
+    set at runtime.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Mapping of the credentials.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nird_s3_sync.utils.get_fs">
+<span class="sig-prename descclassname"><span class="pre">nird_s3_sync.utils.</span></span><span class="sig-name descname"><span class="pre">get_fs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bucket_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nird_s3_sync.utils.get_fs" title="Link to this definition"></a></dt>
+<dd><p>Get a file-system instance mapping to the NIRD S3 bucket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bucket_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Name of the bucket.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If the specified bucket does not exist.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>File-system instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">s3fs.core.S3FileSystem</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Mathieu Tachon.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
