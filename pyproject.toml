@@ -5,9 +5,11 @@ description = ""
 authors = [
     {name = "Mathieu Tachon",email = "mta@akvaplan.niva.no"}
 ]
-readme = "README.md"
+readme = "README.rst"
 requires-python = ">=3.12"
 dependencies = [
+    "fsspec (>=2025.2.0,<2026.0.0)",
+    "s3fs (>=2025.2.0,<2026.0.0)"
 ]
 
 
@@ -17,4 +19,8 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
+pytest-cov = "^6.0.0"
+black = "^25.1.0"
+isort = "^6.0.0"
+flake8 = "^7.1.2"
 
