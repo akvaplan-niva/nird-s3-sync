@@ -33,6 +33,7 @@ def get_file_sha256_checksum(
             sha256_hash.update(chunk)
     return sha256_hash.hexdigest()
 
+
 def fs2fs_copy(
     fs_src: fsspec.spec.AbstractFileSystem,
     path_src: str,
@@ -69,7 +70,7 @@ def fs2fs_copy(
         fs_src.open(path_src, mode="rb") as f_src,
         fs_dest.open(path_dest, mode="wb") as f_dest,
     ):
-        while (chunk := f_src.read(chunk_size)):
+        while chunk := f_src.read(chunk_size):
             sha256_hash.update(chunk)
             f_dest.write(chunk)
     return sha256_hash.hexdigest()

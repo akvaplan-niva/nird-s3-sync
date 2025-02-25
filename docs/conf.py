@@ -8,16 +8,15 @@
 
 
 import os
-from pathlib import Path
-import sys
 import shutil
+import sys
+from pathlib import Path
 
+sys.path.insert(0, os.path.abspath(".."))
 
-sys.path.insert(0, os.path.abspath('..'))
-
-project = 'NIRD S3 Sync'
-copyright = '2025, Mathieu Tachon'
-author = 'Mathieu Tachon'
+project = "NIRD S3 Sync"
+copyright = "2025, Mathieu Tachon"
+author = "Mathieu Tachon"
 
 try:
     from nird_s3_sync import __version__ as version
@@ -60,21 +59,22 @@ pkg_path = this_directory.parent / "nird_s3_sync"
 
 apidoc_modules = [
     {
-     "path": pkg_path.as_posix(),
-     "destination": "source/api/",
-     "automodule_options": {
-         "members", "show-inheritance",
-     },
-     "module_first": True,
+        "path": pkg_path.as_posix(),
+        "destination": "source/api/",
+        "automodule_options": {
+            "members",
+            "show-inheritance",
+        },
+        "module_first": True,
     }
 ]
-templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+templates_path = ["_templates"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # The suffix of source filenames.
 source_suffix = {
-    '.rst': 'restructuredtext',
-    '.md': 'markdown',
+    ".rst": "restructuredtext",
+    ".md": "markdown",
 }
 
 # The reST default role (used for this markup: `text`) to use for all documents.
@@ -84,7 +84,7 @@ default_role = "py:obj"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "sphinx_rtd_theme"
-html_static_path = ['_static']
+html_static_path = ["_static"]
 
 intersphinx_mapping = {
     "fsspec": ("https://filesystem-spec.readthedocs.io/en/latest/", None),

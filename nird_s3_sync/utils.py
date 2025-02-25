@@ -7,8 +7,8 @@ import os
 import fsspec
 import s3fs
 
-
 ENDPOINT_URL = "https://s3.nird.sigma2.no"
+
 
 def get_credentials() -> dict:
     """Get the credentials to access the NIRD S3 bucket.
@@ -33,6 +33,7 @@ def get_credentials() -> dict:
         "secret": secret_key,
     }
     return credentials
+
 
 def get_fs(bucket_name: str) -> s3fs.core.S3FileSystem:
     """Get a file-system instance mapping to the NIRD S3 bucket.
@@ -63,4 +64,3 @@ def get_fs(bucket_name: str) -> s3fs.core.S3FileSystem:
     # Set the bucket_name to an instance attribute
     fs.bucket_name = bucket_name
     return fs
-    
