@@ -1,0 +1,4 @@
+fsspec
+s3fs
+sphinx>=8.2.1
+sphinx_rtd_theme
