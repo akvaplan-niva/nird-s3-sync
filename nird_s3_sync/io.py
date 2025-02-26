@@ -118,7 +118,8 @@ def safe_fs2fs_copy(
 
     See Also
     --------
-    :func:`fs2fs_copy` : Copy file between file-systems with data integrity check.
+    :func:`fs2fs_copy` : Copy file between file-systems without data integrity
+        check.
 
     Returns
     -------
