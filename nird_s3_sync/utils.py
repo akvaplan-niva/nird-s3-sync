@@ -7,7 +7,7 @@ import os
 import fsspec
 import s3fs
 
-ENDPOINT_URL = "https://s3.nird.sigma2.no"
+NIRD_S3_ENDPOINT_URL = "https://s3.nird.sigma2.no"
 
 
 def get_credentials() -> dict:
@@ -56,7 +56,7 @@ def get_fs(bucket_name: str) -> s3fs.core.S3FileSystem:
     credentials = get_credentials()
     fs = fsspec.filesystem(
         "s3",
-        endpoint_url=ENDPOINT_URL,
+        endpoint_url=NIRD_S3_ENDPOINT_URL,
         **credentials,
     )
     if not fs.exists(bucket_name):
