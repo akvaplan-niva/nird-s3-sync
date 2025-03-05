@@ -26,7 +26,7 @@ def f_minio_fs_file():
         "s3",
         key=os.getenv("MINIO_ROOT_USER"),
         secret=os.getenv("MINIO_ROOT_PASSWORD"),
-        endpoint_url=f"http://localhost:{os.getenv('MINIO_PORT')}",
+        endpoint_url=f"http://127.0.0.1:{os.getenv('MINIO_PORT')}",
     )
     bucket_name = os.getenv("MINIO_BUCKET_NAME")
     fs.mkdir(bucket_name)
