@@ -3,6 +3,15 @@ on: [push]
 
 jobs:
   test:
+    services:
+      minio:
+        image: tacmat/minio-service-github-actions:latest
+        ports:
+          - 9000:9000
+        options: --name=minio --health-cmd "curl -I http://localhost:9000/minio/health/live"
+        env:
+          MIN_ROOT_USER: minio
+          MINIO_ROOT_PASSWORD: ${{ secrets.MINROOTPWD }}
     strategy:
       fail-fast: false
       matrix:
@@ -15,13 +24,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Start UP MinIO
-        uses: infleet/minio-action@v0.0.1
-        with:
-          port: "9000"
-          version: "latest"
-          username: "minio"
-          password: ${{ secrets.MINROOTPWD }}
       - name: Run poetry image
         uses: abatilo/actions-poetry@v3
         with:
