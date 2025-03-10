@@ -3,12 +3,12 @@ on: [push]
 
 jobs:
   test:
+    env:
+      MINIO_ROOT_USER: miniot
+      MINIO_ROOT_PASSWORD: ${{ secrets.MINROOTPWD }}
     services:
       minio:
         image: tacmat/minio-service-github-actions:latest
-        env:
-          MINIO_ROOT_USER: miniot
-          MINIO_ROOT_PASSWORD: ${{ secrets.MINROOTPWD }}
         ports:
           - 9000:9000
         options: --name=minio -e MINIO_ROOT_USER -e MINIO_ROOT_PASSWORD --health-cmd "curl -I http://localhost:9000/minio/health/live"
