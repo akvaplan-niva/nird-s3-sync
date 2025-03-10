@@ -9,9 +9,12 @@ jobs:
     services:
       minio:
         image: tacmat/minio-service-github-actions:latest
+        env:
+          MINIO_ROOT_USER: minio
+          MINIO_ROOT_PASSWORD: ${{ secrets.MINIOROOTPWD }}
         ports:
           - 9000:9000
-        options: --name=minio -e MINIO_ROOT_USER -e MINIO_ROOT_PASSWORD --health-cmd "curl -I http://localhost:9000/minio/health/live"
+        options: --name=minio --health-cmd "curl -I http://localhost:9000/minio/health/live"
     strategy:
       fail-fast: false
       matrix:
@@ -40,8 +43,6 @@ jobs:
       - name: Install dependencies
         run: poetry install
       - name: Run tests
-#        env:
-#          MINIO_ROOT_PASSWORD: ${{ secrets.MINIOROOTPWD }}
         run: poetry run pytest --cov=./ --cov-report=xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
