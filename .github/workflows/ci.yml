@@ -4,14 +4,15 @@ on: [push]
 jobs:
   test:
     env:
-      MIN_ROOT_USER: minio
+      MINIO_ROOT_USER: minio
       MINIO_ROOT_PASSWORD: ${{ secrets.MINROOTPWD }}
+      MINIO_PORT: 9000
     services:
       minio:
         image: tacmat/minio-service-github-actions:latest
         ports:
           - 9000:9000
-        options: --name=minio -e MIN_ROOT_USER -e MINIO_ROOT_PASSWORD --health-cmd "curl -I http://localhost:9000/minio/health/live"
+        options: --name=minio -e MINIO_ROOT_USER -e MINIO_ROOT_PASSWORD --health-cmd "curl -I http://localhost:9000/minio/health/live"
     strategy:
       fail-fast: false
       matrix:
