@@ -4,8 +4,8 @@ on: [push]
 jobs:
   test:
     env:
-      MINIO_ROOT_USER: miniot
-      MINIO_ROOT_PASSWORD: ${{ secrets.MINROOTPWD }}
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: ${{ secrets.MINIOROOTPWD }}
     services:
       minio:
         image: tacmat/minio-service-github-actions:latest
@@ -40,8 +40,8 @@ jobs:
       - name: Install dependencies
         run: poetry install
       - name: Run tests
-        env:
-          MINIO_ROOT_PASSWORD: ${{ secrets.MINIOROOTPWD }}
+#        env:
+#          MINIO_ROOT_PASSWORD: ${{ secrets.MINIOROOTPWD }}
         run: poetry run pytest --cov=./ --cov-report=xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
