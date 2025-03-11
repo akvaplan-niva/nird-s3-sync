@@ -108,7 +108,9 @@ def safe_fs2fs_copy(
         file copied on the destination file-system.
     n_retries : `int`, default: 3
         Maximum number of times to restart the copy operation for, if the data
-        was corrupted while copied. Default is 3.
+        was corrupted while copied. Default is 3. If the data is still
+        corrupted after ``n_retries`` times, the copied data is deleted on the
+        destination file-system.
 
     Raises
     ------
@@ -134,6 +136,7 @@ def safe_fs2fs_copy(
         else:
             return
     else:
+        fs_dest.rm(path_dest)
         raise RuntimeError(
             f"The file {path_src!r} was not copied successfully to {path_dest!r}."
         )
