@@ -1,6 +1,5 @@
 # emacs
 *~
-
+.pre-commit-config.yaml
 __pycache__/
-
 *\#
