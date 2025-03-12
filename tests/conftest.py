@@ -29,9 +29,22 @@ def f_minio_fs_file():
         endpoint_url=f"http://127.0.0.1:{os.getenv('MINIO_PORT')}",
     )
     bucket_name = os.getenv("MINIO_BUCKET_NAME")
-    print(f"MINIO_ROOT_USER: {os.getenv('MINIO_ROOT_USER')}")
     fs.mkdir(bucket_name)
     test_filename = "test_file.txt"
     filepath = os.path.join(bucket_name, test_filename)
     yield fs, filepath
+    fs.rm(bucket_name, recursive=True)
+
+
+@pytest.fixture
+def f_minio_fs_bucket():
+    fs = fsspec.filesystem(
+        "s3",
+        key=os.getenv("MINIO_ROOT_USER"),
+        secret=os.getenv("MINIO_ROOT_PASSWORD"),
+        endpoint_url=f"http://127.0.0.1:{os.getenv('MINIO_PORT')}",
+    )
+    bucket_name = os.getenv("MINIO_BUCKET_NAME")
+    fs.mkdir(bucket_name)
+    yield fs, bucket_name
     fs.rm(bucket_name, recursive=True)
